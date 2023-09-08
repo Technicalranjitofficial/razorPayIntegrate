@@ -1,0 +1,53 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model tbl_user {
+  id      Int @unique 
+  mobile    String
+  email   String   @unique
+  password String
+  code String
+  owncode String
+  privacy String
+  status Int
+  createdate DateTime  @db.Timestamp @default(now())
+
+  // Account Account?
+}
+
+model Wallet {
+  id              Int       @id @default(autoincrement())
+  userid          Int @unique
+  amount          String    @db.VarChar(500)
+  envelopestatus  Int       @db.SmallInt
+  createdate      DateTime  @db.Timestamp @default(now())
+
+  @@map(name: "tbl_wallet") // Replace "tbl_wallet" with your actual table name
+}
+
+model Payment {
+  id                 String @id @default(cuid())
+  amount             String
+  payment_id         String
+  order_id           String
+  razorpay_signature String
+  userid             String
+ 
+}
+
+model Account {
+  id      String @id @default(cuid())
+  balance Float
+  userid  String @unique
+  // user    tbl_user   @relation(fields: [userid], references: [id])
+}
