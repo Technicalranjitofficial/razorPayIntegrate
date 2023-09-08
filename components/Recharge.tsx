@@ -139,17 +139,18 @@ export default function Recharge({email,userid,amnt}:{email:string,userid:string
         <div>
 
 
-            <p>Please wait while your transaction is complete,Donot refresh the page</p>
-          <button onClick={() => displayRazorpay()}>Display RazorPay</button>
+<h1>Do not refresh the page, We will redirect you back to the game when the payment is complete</h1>
+            {/* <p>Please wait while your transaction is complete</p> */}
+          {/* <button onClick={() => displayRazorpay()}>Display RazorPay</button> */}
           <br />
 
-          <button
+          {/* <button
             onClick={() => {
             //   createUser("Ranjit Das", "21053420@gmail.com");
             }}
           >
             CreateAccount
-          </button>
+          </button> */}
 
           <br />
           {/* <button
